@@ -14,7 +14,7 @@ NULLCMD = :
 srcdir = .
 topdir = /Users/yoshito/.rbenv/versions/2.5.1/include/ruby-2.5.0
 hdrdir = $(topdir)
-arch_hdrdir = /Users/yoshito/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17
+arch_hdrdir = /Users/yoshito/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin18
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
 prefix = $(DESTDIR)/Users/yoshito/.rbenv/versions/2.5.1
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20190205-2617-j1q8qf
-sitelibdir = $(DESTDIR)./.gem.20190205-2617-j1q8qf
+sitearchdir = $(DESTDIR)./.gem.20190310-3161-glp2j4
+sitelibdir = $(DESTDIR)./.gem.20190310-3161-glp2j4
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -81,7 +81,7 @@ optflags = -O3
 debugflags = -ggdb3
 warnflags = 
 CCDLFLAGS = -fno-common
-CFLAGS   = $(CCDLFLAGS)  -O3 -Wno-error=shorten-64-to-32  -pipe $(ARCH_FLAG)
+CFLAGS   = $(CCDLFLAGS) $(cflags)  -pipe $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
 CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/Users/yoshito/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
@@ -102,7 +102,7 @@ RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = x86_64-darwin17
+arch = x86_64-darwin18
 sitearch = $(arch)
 ruby_version = 2.5.0
 ruby = $(bindir)/$(RUBY_BASE_NAME)
