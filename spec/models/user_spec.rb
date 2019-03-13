@@ -86,6 +86,14 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context '好きな食べ物の場合' do
+      let(:age) { 22 }
+      let(:foods) { ["焼きそば", "たまねぎ"] }
+      it '焼きそば、寿司が返ってくること' do
+        expect(user.favorite_food(foods)).to eq ["焼きそば"]
+      end
+    end
+
     context '嫌いな食べ物の場合' do
       let(:age) { 22 }
       let(:foods) { ["カレー", "エビフライ"] }
