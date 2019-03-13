@@ -12,11 +12,15 @@ class User < ApplicationRecord
   end
 
   def greet
-    if @age <= 12
-      "ぼくは#{@name}だよ。"
-    else
-      "僕は#{@name}です。"
-    end
+    boy? ? "ぼくは#{@name}だよ。" : "僕は#{@name}です。"
+  end
+
+  def boy?
+    self.age <= 12
+  end
+
+  def self.build_child
+    User.new(name: 'たろう', age: 6)
   end
 
   def favorite_food(foods)

@@ -121,4 +121,23 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'mock' do
+    context 'あいさつができること' do
+      it 'ぼくは~だよ、という返事が返ってくること' do
+        user_mock = double('user')
+        allow(user_mock).to receive(:boy?)
+
+        user = User.new(name: 'たろう', age: 6)
+        allow(user).to receive(:boy?).and_return(user_mock)
+        expect{ user.greet }.not_to raise_error
+      end
+
+      it '子供が作成できること' do
+        user_mock = double('user')
+        allow(User).to receive(:build_child).and_return(user_mock)
+        expect{ User.build_child }.not_to raise_error
+      end
+    end
+  end
 end
