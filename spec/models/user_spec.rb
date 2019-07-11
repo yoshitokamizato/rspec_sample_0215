@@ -140,4 +140,19 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  it 'エラーが起きたら通知すること' do
+    twitter_client_mock = double('Twitter client')
+    # updateメソッドが呼ばれたらエラーを発生させる
+    allow(twitter_client_mock).to receive(:update).and_raise('エラーが発生しました')
+
+    weather_bot = WeatherBot.new
+    allow(weather_bot).to receive(:twitter_client).and_return(twitter_client_mock)
+    # notifyメソッドが呼ばれることを検証する
+    weather_bot.tweet_forecast
+    expect(weather_bot).to receive(:notify)
+
+    # tweet_forecastメソッドを呼び出す
+    # weather_botのnotifyメソッドが呼び出されたらテストはパスする
+  end
 end
